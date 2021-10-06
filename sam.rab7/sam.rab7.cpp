@@ -1,10 +1,17 @@
 ﻿#include <iostream>
+#include <cstdlib>
+
 using namespace std;
 int main()
 {
 	setlocale(0, "");
 	cout << "\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Выход\n";
-	int menu; int size; char texture; int place; int a = 0; int a1 = 0;
+	int menu; 
+	int size; 
+	char texture; 
+	int place; 
+	int a = 0; 
+	int a1 = 0; 
 	cin >> menu;
 	switch (menu)
 	{
@@ -16,13 +23,16 @@ int main()
 		{
 		case 1:
 			system("cls");
-			cout << "Укажите по порядку ее размер и тот символ из которого будет линия\n";
-			cin >> size >> texture;
-			while (size < 0)
-			{
-				cout << "Попробуй ввести поло-ое число, друг\n";
-				cin >> size;
+			cout << "Введите размер лини\n"; cin >> size;
+				
+			while(cin.fail() || size < 1){
+					cin.clear();
+					cin.ignore();
+					cout << "error/Введите корректные данные(Обычное положительное число)\n";
+					cin >> size;
 			}
+	
+			cout << "Введите текстуру линии\n"; cin >> texture;
 			system("cls");
 			cout << "\n";
 			while (a != size)
@@ -33,13 +43,16 @@ int main()
 			break;
 		case 2:
 			system("cls");
-			cout << "Укажите по порядку ее размер и тот символ из которого будет линия\n";
-			cin >> size >> texture;
-			while (size < 0)
-			{
-				cout << "Попробуй ввести поло-ое число, друг\n";
+			cout << "Укажите размер линии\n";
+			cin >> size;
+			while (cin.fail() || size < 1) {
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
 				cin >> size;
 			}
+
+			cout << "Введите текстуру линии\n"; cin >> texture;
 			system("cls");
 			cout << "\n";
 			while (a != size)
@@ -50,22 +63,20 @@ int main()
 			break;
 
 		default:
-			cout << "Такорго варианта нет\n";
+			cout << "Такорго варианта нет перезапусти программу\n";
 			break;
 		}
 		break;
 	case 2:
 		system("cls");
-		cout << "Укажите размер стороны квадрата и символ из которого он состоит\n";
-		cin >> size >> texture;
-		system("cls");
-		cout << "\n";
-		while (size < 0)
-		{
-			cout << "Попробуй ввести поло-ое число, друг\n";
+		cout << "Введите размер лини\n"; cin >> size;
+		while (cin.fail() || size < 1) {
+			cin.clear();
+			cin.ignore();
+			cout << "error/Введите корректные данные(Обычное положительное число)\n";
 			cin >> size;
-			system("cls");
 		}
+		cout << "Введите текстуру линии\n"; cin >> texture;
 		a = size;
 		while (a != 0)
 		{
@@ -80,10 +91,12 @@ int main()
 		break;
 	case  3:
 		system("cls");
-		cout << "Вы вышли из программы";
+		cout << "Вы вышли из программы\n";
+		system("pause");
+		exit(0);
 		break;
 	default:
-		cout << "Такого варианта не существует";
+		cout << "Такого варианта не существует, перезапустите программу\n";
 		break;
 	}
 	int _; cin >> _;
