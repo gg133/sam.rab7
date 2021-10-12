@@ -5,16 +5,17 @@ using namespace std;
 int main()
 {
 	setlocale(0, "");
-	cout << "\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Выход\n";
-	int menu; 
-	int size; 
-	char texture; 
-	int place; 
-	int a = 0; 
-	int a1 = 0; 
+	cout <<"\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Выход\n";
+	int menu;
+	int size;
+	char texture;
+	int place;
+	int a = 0;
+	int a1 = 0;
 	int size2;
 	int cursed;
 	int cursed2;
+	int cursed3;
 	cin >> menu;
 	switch (menu)
 	{
@@ -153,7 +154,7 @@ int main()
 			cout << "Введите размер вертикальной лини\n";
 			cin >> size2;
 
-			while (cin.fail() || size < 1) 
+			while (cin.fail() || size < 1)
 			{
 				cin.clear();
 				cin.ignore();
@@ -174,50 +175,58 @@ int main()
 				a++;
 			}
 			break;
-		
-		case 2:
-				system("cls");
-				cout << "Введите размер горизонтальной  лини\n";
-				cin >> size;
-				cout << "Введите размер вертикальной лини\n";
-				cin >> size2;
 
-				while (cin.fail() || size < 1) {
-					cin.clear();
-					cin.ignore();
-					cout << "error/Введите корректные данные(Обычное положительное число)\n";
-					cin >> size;
-				}
-				cout << "Введите текстуру линии\n";
-				cin >> texture;
-				cout << "\n";
-				a = size2;
-				while (a != 0)
+		case 2:
+			system("cls");
+			cout << "Введите размер горизонтальной  лини\n";
+			cin >> size;
+			cout << "Введите размер вертикальной лини\n";
+			cin >> size2;
+
+			while (cin.fail() || size < 1) {
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n";
+			cin >> texture;
+			cout << "\n";
+			a = size2;
+			while (a != 0)
+			{
+				a1 = size;
+				while (a1 != 0)
 				{
-					a1 = size;
-					while (a1 != 0)
+					if (a == 1 || a == size2 || a1 == 1 || a1 == size)
 					{
-						if (a == 1 || a == size2 || a1 == 1 || a1 == size)
-						{
-							cout << texture << " ";
-						}
-						else {
-							cout << "  ";
-						}
-						a1--;
+						cout << texture << " ";
 					}
-					cout << "\n";
-					a--;
+					else {
+						cout << "  ";
+					}
+					a1--;
 				}
-				break;
-			default:
-				cout << "Такого варианта нет\n";
-				break;
+				cout << "\n";
+				a--;
+			}
+			break;
+		default:
+			cout << "Такого варианта нет\n";
+			break;
 		}
 		break;
 		//ТРЕУГОЛЬНИК
-		case 4:
+	case 4:
+	{
+		system("cls");
+		cout << "Выберите треугольник\n\n1.Пустой\n2.Проклятый(cursed?)\n3.Пустой"<<"\n";
+		cin >> cursed3;
+		switch (cursed3) {
+		case 1:
 		{
+
+
 			system("cls");
 			int height;
 			cout << "Введите высоту треугольника\n";
@@ -232,18 +241,81 @@ int main()
 			cout << "Введите текстуру линии\n"; cin >> texture;
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < size; j++) {
-					if (i == height -1 || j == size /2+i || j == size /2-i) {
+					if (i == height - 1 || j == size / 2 + i || j == size / 2 - i) {
 						cout << texture << " ";
 					}
 					else {
 						cout << "  ";
 					}
 				}
-				
+
 				cout << "\n";
 			}
-				break;
+			break;
 		}
+		case 2: {
+			system("cls");
+			int height;
+			cout << "Введите высоту треугольника\n";
+			cin >> height;
+			while (cin.fail() || height < 1) {
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> height;
+			}
+			size = height * 2 - 1;
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			system("cls");
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < size; j++) {
+					if (i == height - 1 || j == size / 2 + i || j == size / 2 - i || j > size/2 + i || j < size/2 - i) {
+						cout << texture << " ";
+					}
+					else {
+						cout << "  ";
+					}
+				}
+				cout << "\n";
+			}
+			break;
+		}
+		case 3: {
+			system("cls");
+			int height;
+			cout << "Введите высоту треугольника\n";
+			cin >> height;
+			while (cin.fail() || height < 1) {
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> height;
+			}
+			size = height * 2 - 1;
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			system("cls");
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < size; j++) {
+					if (i == height + 1 || j == size / 2 + i || j == size / 2 - i || j > size / 2 + i || j < size / 2 - i) {
+						cout << "  ";
+					}
+					else {
+						cout << texture << " ";
+						
+					}
+				}
+				cout << "\n";
+			}
+			break;
+		}
+		default:
+		{
+			cout << "Такого варианта нет\n";
+			break;
+		}
+		break;
+		}
+		break;
 	case  5:
 		system("cls");
 		cout << "Вы вышли из программы\n";
@@ -257,4 +329,5 @@ int main()
 	int _; cin >> _;
 	return 0;
 
+	}
 }
