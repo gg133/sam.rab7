@@ -217,18 +217,33 @@ int main()
 		break;
 		//ТРЕУГОЛЬНИК
 		case 4:
+		{
 			system("cls");
-			cout << "Введите размер лини\n"; cin >> size;
-			while (cin.fail() || size < 1) {
+			int height;
+			cout << "Введите высоту треугольника\n";
+			cin >> height;
+			while (cin.fail() || height < 1) {
 				cin.clear();
 				cin.ignore();
 				cout << "error/Введите корректные данные(Обычное положительное число)\n";
-				cin >> size;
+				cin >> height;
 			}
+			size = height * 2 - 1;
 			cout << "Введите текстуру линии\n"; cin >> texture;
-			a = size;
-
-		break;
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < size; j++) {
+					if (i == height -1 || j == size /2+i || j == size /2-i) {
+						cout << texture << " ";
+					}
+					else {
+						cout << "  ";
+					}
+				}
+				
+				cout << "\n";
+			}
+				break;
+		}
 	case  5:
 		system("cls");
 		cout << "Вы вышли из программы\n";
