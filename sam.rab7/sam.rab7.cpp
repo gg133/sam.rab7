@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	setlocale(0, "");
-	cout <<"\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Выход\n";
+	cout <<"\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Крест\n6.Выход\n";
 	int menu;
 	int size;
 	char texture;
@@ -294,7 +294,7 @@ int main()
 			size = height * 2 - 1;
 			cout << "Введите текстуру линии\n"; cin >> texture;
 			system("cls");
-			for (int i = 1; i < height; i++) {
+			for (int i = 1; i < height+1; i++) {
 				for (int j = 0; j < size; j++) {
 					if (i == height + 1 || j == size / 2 + i || j == size / 2 - i || j > size / 2 + i || j < size / 2 - i) {
 						cout << "  ";
@@ -315,7 +315,39 @@ int main()
 		break;
 		}
 		break;
-	case  5:
+		//КРЕСТ
+	case 5: {
+		system("cls");
+		 cout << "Введите размер лини\n"; cin >> size;
+		 while (cin.fail() || size < 1)
+		 {
+			 cin.clear();
+			 cin.ignore();
+			 cout << "error/Введите корректные данные(Обычное положительное число)\n";
+			 cin >> size;
+		 }
+		 cout << "Введите текстуру линии\n"; cin >> texture;
+		 system("cls");
+		 if (size % 2 == 0)
+		 {
+			 size += 1;
+		 }
+		 for (int i = 0; i < size; i++) {
+			 for (int j = 0; j < size; j++)
+			 {
+				
+				 if (j == size / 2 || i == size / 2 ) {
+					 cout << texture << " ";
+				 }
+				 else {
+					 cout << "  ";
+				 }
+			 }
+			 cout<<"\n";
+		 }
+		break;
+	}
+	case  6:
 		system("cls");
 		cout << "Вы вышли из программы\n";
 		system("pause");
