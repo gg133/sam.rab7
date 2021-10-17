@@ -79,7 +79,7 @@ int main()
 		//КВАДРАТ
 	case 2:
 		system("cls");
-		cout << "Выберие тип квадрата\n\n1.Пустой\n2.Закрашенный\n";
+		cout << "Выберие тип квадрата\n\n1.Пустой\n2.Закрашенный\n3.Рекурсивный\n";
 		cin >> cursed;
 		switch (cursed)
 		{
@@ -135,6 +135,36 @@ int main()
 				a--;
 			}
 			break;
+		case 3:
+		{
+			system("cls");
+			cout << "Введите размер лини\n"; cin >> size;
+			while (cin.fail() || size < 1)
+			{
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			if (size % 2 == 0) {
+				size += 1;
+			}
+			for (int i = 0; i < size; i++) {
+				for (int j = 0; j < size; j++)
+				{
+					if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)) {
+						cout << texture << " ";
+					}
+					else
+					{
+						cout << "  ";
+					}
+				}
+				cout << "\n";
+			}
+		}
+		break;
 		default:
 			cout << "Такого варианта не существует, перезапустите программу\n";
 			break;
