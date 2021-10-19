@@ -1,11 +1,13 @@
 ﻿#include <iostream>
 #include <cstdlib>
+#include <Windows.h>
+
 
 using namespace std;
 int main()
 {
 	setlocale(0, "");
-	cout <<"\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Крест\n6.Выход\n";
+	cout << "\"Геометрические фигуры\"\n\nВыберите фигуру: \n1.Линия\n2.Квадрат\n3.Прямоугольник\n4.Треугольник\n5.Крест\n6.Решетка\n7.Крестик[X]\n8.Выход\n";
 	int menu;
 	int size;
 	char texture;
@@ -79,7 +81,7 @@ int main()
 		//КВАДРАТ
 	case 2:
 		system("cls");
-		cout << "Выберие тип квадрата\n\n1.Пустой\n2.Закрашенный\n3.Рекурсивный\n";
+		cout << "Выберие тип квадрата\n\n1.Пустой\n2.Закрашенный\n3.Рекурсивный\n4.Бесконечно рекусрсивный\n5.Самоуничтожающийся\n6.Типа колесо\n";
 		cin >> cursed;
 		switch (cursed)
 		{
@@ -162,6 +164,185 @@ int main()
 					}
 				}
 				cout << "\n";
+			}
+		}
+		break;
+		case 4:
+		{
+			system("cls");
+			bool a = true; bool b = true;
+			cout << "Введите размер лини\n"; cin >> size;
+			while (cin.fail() || size < 1)
+			{
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			if (size % 2 == 0) {
+				size += 1;
+			}
+			while (b == true) {
+
+				if (a == true) {
+					Sleep(20);
+					//system("pause");
+					//cout << "\r";
+
+					system("cls");
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)) {
+								cout << texture << " ";
+							}
+							else
+							{
+								cout << "  ";
+							}
+						}
+						cout << "\n";
+					}
+					a = false;
+				}
+				else if (a == false)
+				{
+					Sleep(20);
+					system("cls");
+					//cout << "\r";
+
+					//system("pasue");
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)) {
+								cout << "  ";
+							}
+							else
+							{
+								cout << texture << " ";
+							}
+						}
+						cout << "\n";
+					}
+					a = true;
+				}
+			}
+		}
+		break;
+		case 5:
+		{
+			system("cls");
+			bool a = true; bool b = true;
+			cout << "Введите размер лини\n"; cin >> size;
+			while (cin.fail() || size < 1)
+			{
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			if (size % 2 == 0) {
+				size += 1;
+			}
+			while (b == true) {
+
+				if (a == true) {
+					Sleep(150);
+					system("cls");
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)) {
+								cout << texture << " ";
+							}
+							else
+							{
+								cout << "  ";
+							}
+						}
+						cout << "\n";
+					}
+					a = false;
+				}
+				else if (a == false)
+				{
+					Sleep(150);
+					system("cls");
+					size -= 2;
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)) {
+								cout << "  ";
+							}
+							else
+							{
+								cout << texture << " ";
+							}
+						}
+						cout << "\n";
+					}
+					a = true;
+				}
+			}
+		}
+		break;
+		case 6:
+		{
+			system("cls");
+			bool a = true; bool b = true;
+			cout << "Введите размер лини\n"; cin >> size;
+			while (cin.fail() || size < 1)
+			{
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			if (size % 2 == 0) {
+				size += 1;
+			}
+			while (b == true) {
+
+				if (a == true) {
+					system("cls");
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || i == j || i == size - j - 1/* (i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)*/) {
+								cout << texture << " ";
+							}
+							else
+							{
+								cout << "  ";
+							}
+						}
+						cout << "\n";
+					}
+					a = false;
+				}
+				else if (a == false)
+				{
+					system("cls");
+					for (int i = 0; i < size; i++) {
+						for (int j = 0; j < size; j++)
+						{
+							if (i == 0 || j == 0 || i == size - 1 || j == size - 1  /*<БАЗА*/ || i == size / 2 || j == size / 2 /*(i % 2 == 0 && j >= i && j <= size - i - 1) || (i % 2 == 0 && j <= i && j >= size - i - 1) || (j % 2 == 0 && i >= j && i <= size - j - 1) || (j % 2 == 0 && i <= j && i >= size - j - 1)*/) {
+								cout << texture << " ";
+							}
+							else
+							{
+								cout << "  ";
+							}
+						}
+						cout << "\n";
+					}
+					a = true;
+				}
 			}
 		}
 		break;
@@ -250,7 +431,7 @@ int main()
 	case 4:
 	{
 		system("cls");
-		cout << "Выберите треугольник\n\n1.Пустой\n2.Проклятый(cursed?)\n3.Закрашенный"<<"\n";
+		cout << "Выберите треугольник\n\n1.Пустой\n2.Проклятый(cursed?)\n3.Закрашенный" << "\n";
 		cin >> cursed3;
 		switch (cursed3) {
 		case 1:
@@ -299,7 +480,7 @@ int main()
 			system("cls");
 			for (int i = 0; i < height; i++) {
 				for (int j = 0; j < size; j++) {
-					if (i == height - 1 || j == size / 2 + i || j == size / 2 - i || j > size/2 + i || j < size/2 - i) {
+					if (i == height - 1 || j == size / 2 + i || j == size / 2 - i || j > size / 2 + i || j < size / 2 - i) {
 						cout << texture << " ";
 					}
 					else {
@@ -324,7 +505,7 @@ int main()
 			size = height * 2 - 1;
 			cout << "Введите текстуру линии\n"; cin >> texture;
 			system("cls");
-			for (int i = 1; i < height+1; i++) {
+			for (int i = 1; i < height + 1; i++) {
 				for (int j = 0; j < size; j++) {
 					if (i == height + 1 || j == size / 2 + i || j == size / 2 - i || j > size / 2 + i || j < size / 2 - i) {
 						cout << "  ";
@@ -348,47 +529,118 @@ int main()
 		//КРЕСТ
 	case 5: {
 		system("cls");
-		 cout << "Введите размер лини\n"; cin >> size;
-		 while (cin.fail() || size < 1)
-		 {
-			 cin.clear();
-			 cin.ignore();
-			 cout << "error/Введите корректные данные(Обычное положительное число)\n";
-			 cin >> size;
-		 }
-		 cout << "Введите текстуру линии\n"; cin >> texture;
-		 system("cls");
-		 if (size % 2 == 0)
-		 {
-			 size += 1;
-		 }
-		 for (int i = 0; i < size; i++) {
-			 for (int j = 0; j < size; j++)
-			 {
-				
-				 if (j == size / 2 || i == size / 2 ) {
-					 cout << texture << " ";
-				 }
-				 else {
-					 cout << "  ";
-				 }
-			 }
-			 cout<<"\n";
-		 }
+		cout << "Введите размер лини\n"; cin >> size;
+		while (cin.fail() || size < 1)
+		{
+			cin.clear();
+			cin.ignore();
+			cout << "error/Введите корректные данные(Обычное положительное число)\n";
+			cin >> size;
+		}
+		cout << "Введите текстуру линии\n"; cin >> texture;
+		system("cls");
+		if (size % 2 == 0)
+		{
+			size += 1;
+		}
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++)
+			{
+
+				if (j == size / 2 || i == size / 2) {
+					cout << texture << " ";
+				}
+				else {
+					cout << "  ";
+				}
+			}
+			cout << "\n";
+		}
 		break;
 	}
-	case  6:
+		  break;
+	case 6:
+	{
+		system("cls");
+		cout << "Введите размер лини\n"; cin >> size;
+
+		while (cin.fail() || size < 1)
+		{
+			cin.clear();
+			cin.ignore();
+			cout << "error/Введите корректные данные(Обычное положительное число)\n";
+			cin >> size;
+		}
+		cout << "Введите текстуру линии\n"; cin >> texture;
+		if (size % 2 == 0)
+		{
+			size += 1;
+		}
+		
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++)
+			{
+				if ((i % 2 == 1 || j % 2 == 1) && (i!=size-1 && j !=size-1) ){
+					cout << texture << " ";
+				}
+				else
+				{
+					cout << "  ";
+				}
+			}
+			cout << "\n";
+		}
+
+	}
+	break;
+	case 7:
+	{
+			system("cls");
+			cout << "Введите размер лини\n"; cin >> size;
+			while (cin.fail() || size < 1)
+			{
+				cin.clear();
+				cin.ignore();
+				cout << "error/Введите корректные данные(Обычное положительное число)\n";
+				cin >> size;
+			}
+			cout << "Введите текстуру линии\n"; cin >> texture;
+			system("cls");
+			if (size % 2 == 0)
+			{
+				size += 1;
+			}
+			for (int i = 0; i < size; i++) {
+				for (int j = 0; j < size; j++)
+				{
+					if ( i == j || i == size - j - 1) {
+						cout << texture << " ";
+					}
+					else
+					{
+						cout << "  ";
+					}
+				}
+				cout << "\n";
+			}
+	}
+	break;
+	case  8:
 		system("cls");
 		cout << "Вы вышли из программы\n";
 		system("pause");
 		exit(0);
 		break;
 	default:
+	{
 		cout << "Такого варианта не существует, перезапустите программу\n";
-		break;
+	}
+	break;
 	}
 	int _; cin >> _;
 	return 0;
-
 	}
 }
+	
+
+
